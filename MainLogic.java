@@ -1,6 +1,4 @@
 package com.mondee;
-import java.util.HashSet;
-import java.util.Set;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,30 +16,18 @@ public static void main(String[] args) {
 		SessionFactory sf = me.buildSessionFactory();
 		Session se = sf.openSession();
 		Transaction tx = se.beginTransaction();
+		CreditCard cc=new CreditCard();
+		cc.setPaymentId(131);
+		cc.setAmount(12000);
+		cc.setCreditCardType("VISA");
 		
-		Vendor v=new Vendor();
-		v.setVendorId(1);
-		v.setVendorName("Flipkart");
-		
-		Customer c=new Customer();
-		c.setCustomerId(101);
-		c.setCustomerName("swathi");
-		c.getVendor().add(v);
-		
-		Customer c2=new Customer();
-		c2.setCustomerId(102);
-		c2.setCustomerName("Jim");
-		c2.getVendor().add(v);
-		
-		v.getCustomer().add(c);
-		v.getCustomer().add(c2);
-		
-		se.save(c);
-		se.save(c2);
-		se.save(v);
-		
+		Cheque cq=new Cheque();
+		cq.setPaymentId(132);
+		cq.setAmount(20000);
+		cq.setChequeType("ICICI");
+		 se.save(cc);
+		 se.save(cq);
 		tx.commit();
 		se.close();
-	}
-
+		}
 }
