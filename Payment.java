@@ -1,7 +1,15 @@
 package com.mondee;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Table(name="Payment")
+@Entity
 public class Payment {
+	@Column(name="PaymentId")
 	private int PaymentId;
+	@Column(name="amount")
 	private double amount;
 	public int getPaymentId()
 	{

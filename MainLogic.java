@@ -10,19 +10,20 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
 public class MainLogic {
 public static void main(String[] args) {
+		// TODO Auto-generated method stub
        StandardServiceRegistry ssr=new StandardServiceRegistryBuilder().configure("hibernate.xml").build();
        Metadata me=new org.hibernate.boot.MetadataSources(ssr).getMetadataBuilder().build();
 		SessionFactory sf = me.buildSessionFactory();
 		Session se = sf.openSession();
 		Transaction tx = se.beginTransaction();
 		CreditCard cc=new CreditCard();
-		cc.setPaymentId(380);
-		cc.setAmount(1000);
+		cc.setPaymentId(121);
+		cc.setAmount(12000);
 		cc.setCreditCardType("VISA");
 		
 		Cheque cq=new Cheque();
-		cq.setPaymentId(868);
-		cq.setAmount(70000);
+		cq.setPaymentId(122);
+		cq.setAmount(20000);
 		cq.setChequeType("ICICI");
 		 se.save(cc);
 		 se.save(cq);
