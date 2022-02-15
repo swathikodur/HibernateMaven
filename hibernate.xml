@@ -9,7 +9,7 @@
 <property name="show_sql">true</property>
 <property name="dialet">org.hibernate.dialect.MySQLDialect</property>
 <property name="hbm2ddl.auto">create</property>
-<mapping class="com.mondee.Vehicle"/>
-<mapping class="com.mondee.UserDetails"/>
+<mapping class="com.mondee.Customer"/>
+<mapping class="com.mondee.Vendor"/>
 </session-factory>
 </hibernate-configuration>
