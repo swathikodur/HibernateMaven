@@ -1,29 +1,33 @@
 package com.mondee;
 
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name="vendor")
+@Table(name="vendor_m")
 public class Vendor {
+	
 	@Id
 	@Column(name="vid")
 	private int vendorId;
-	
-	@Column(name="vName")
+	@Column(name="vname")
 	private String vendorName;
 	
-	@OneToMany(fetch=FetchType.LAZY,targetEntity=Customer.class,cascade=CascadeType.ALL)
-	@JoinColumn(name="fkvid",referencedColumnName="vid")
-	private Set obj;
+	@ManyToMany
+	private Set<Customer>customer=new HashSet<Customer>();
 
+	
 	public int getVendorId() {
 		return vendorId;
 	}
@@ -40,12 +44,12 @@ public class Vendor {
 		this.vendorName = vendorName;
 	}
 
-	public Set getObj() {
-		return obj;
+	public Set<Customer> getCustomer() {
+		return customer;
 	}
 
-	public void setObj(Set obj) {
-		this.obj = obj;
+	public void setCustomer(Set<Customer> customer) {
+		this.customer = customer;
 	}
 
 }
